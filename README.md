@@ -22,8 +22,8 @@ I am a student from Sabancı University **Ege Büyükacaroğlu** and in this pro
 - **Fullfillment Leve:** Amount of fullfillment i feel end of the day. (on a scale of 1-5)
 - **Holiday:** is the day holiday(1) or Work Day(0)? (0-1)
 ### **Methodes of Data Gathering**
- -Social Media Time and Screen Tİme will be gathered from shared Screen Time across Apple Ecosystem (Iphone/Ipad/Macbook)
- -Day's Leisure Time, Holiday and Fullfillment will be evaluated and logged daily at the end of the day.
+ - Social Media Time and Screen Tİme will be gathered from shared Screen Time across Apple Ecosystem (Iphone/Ipad/Macbook)
+ - Day's Leisure Time, Holiday and Fullfillment will be evaluated and logged daily at the end of the day.
  ---
  
  ## **Hypothesis**
