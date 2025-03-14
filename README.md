@@ -7,13 +7,13 @@ I am a student from Sabancı University **Ege Büyükacaroğlu** and in this pro
 ---
 ## **What is defined as Quality Media?**
  - I define quality media as type of media which to be able to produced and create a narrative requires a cumilative effort for various creative minds alongside with a budget this consist of:
-   -- Films/TV Series
-   -- Comics/Mangas
-   -- Story Driven Video Games
-- Social Media's I primarily use
-   -- Youtube
-   -- Reddit
-   -- Instagram
+   , Films/TV Series
+   , Comics/Mangas
+   , Story Driven Video Games
+- Social Media's I primarily use:
+  , Youtube
+  , Reddit
+  , Instagram
 
 ---
 ## **Motivation**
