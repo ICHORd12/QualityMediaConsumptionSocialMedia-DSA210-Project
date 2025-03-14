@@ -5,7 +5,7 @@
 I am a student from Sabancı University **Ege Büyükacaroğlu** and in this project i will be analysing my types of media consumption coming months. This project aims to show the connection between social media consumption and Quality Media Consumption.
 
 ---
-## **What is defined as Quality Media?
+## **What is defined as Quality Media?**
  I define quality media as type of media which to be able to produced and create a narrative requires a cumilative effort for various creative minds alongside with a budget this consist of:
    -Films/TV Series
    -Comics/Mangas
