@@ -23,14 +23,15 @@ I am a student from Sabancı University **Ege Büyükacaroğlu** and in this pro
 
 ## **Dataset**
 - **Date:** Date of the record (DD/MM/YYYY)
-- **Film/TV Series Consumption** Total amount of Film watched through week. (Hours)
-- **Comıc/Manga** Total amount of Comıc/Manga consumption through week. (Hours)
-- **Story Driven Video Games** Total amount of Comıc/Manga consumption through week. (Hours)
-- **Instagram Usage:** Amount of time i usa Instagram through week. (Hours)
-- **Reddit Usage:** Amount of time i usa Reddit through week. (Hours)
-- **Youtube Usage:** Amount of time i usa Youtube through week. (Hours)
-- **Total Quality Media Consumption:** Total amount of quality media consumption.
+- **Film/TV Series Consumption** Total amount of Film watched through week. (Hours A.B)
+- **Comıc/Manga** Total amount of Comıc/Manga consumption through week. (Hours A.B)
+- **Story Driven Video Games** Total amount of Comıc/Manga consumption through week. (Hours A.B)
+- **Instagram Usage:** Amount of time i usa Instagram through week. (Hours A.B)
+- **Reddit Usage:** Amount of time i usa Reddit through week. (Hours A.B)
+- **Youtube Usage:** Amount of time i usa Youtube through week. (Hours A.B)
+- **Total Quality Media Consumption:** Total amount of quality media consumption. (Hours A.B)
 - **Holiday:** is the day holiday(1) or Work Day(0)? (0-1)
+  NOTE: A.B Where A denotes hours range [0-+inf), B denotes minutes range [0-59]
 ### **Methodes of Data Gathering**
  - All Social Media Time will be gathered from shared Screen Time function across Apple Ecosystem (Iphone/Ipad/Macbook)
  - **Film Consumption** will be from gathered IMDB Log's.
