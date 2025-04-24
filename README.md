@@ -2,7 +2,7 @@
 -----------------------------------------
 
 ## **Project Overview**
-I am a student from Sabancı University **Ege Büyükacaroğlu** and in this project i will be analysing my types of media consumption coming months. This project aims to show the connection between social media consumption and Quality Media Consumption.
+I am a student from Sabancı University **Ege Büyükacaroğlu** and in this project i will be analysing my types of media consumption In a three week period (31.03.2025-20.04.2025) . This project aims to show the connection between social media consumption and Quality Media Consumption, Alongside with my media consumption habit.
 
 ---
 ## **What is defined as Quality Media?**
