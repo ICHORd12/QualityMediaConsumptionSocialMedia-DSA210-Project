@@ -47,35 +47,35 @@ I am a student from Sabancı University **Ege Büyükacaroğlu** and in this pro
  - **Method Used :** Pearson Correlation and Randomization Test
  ---
  #### **Hypothesis 1: Result**
- -**P-Value :** 0.8479
- -**Conclusion** Fail to reject the null hypothesis  there are not enough evidence
+ - **P-Value :** 0.8479
+ - **Conclusion** Fail to reject the null hypothesis  there are not enough evidence
  ---
  ### **Hypothesis 2**
- -**Null Hypothesis (H₀):** There is no meaningful connection between my Quality Media Consumption and Day Type (X ₀ = X ₐ)
- -**Alternative Hypothesis (Hₐ):** There is a meaningful connection between Quality Media consumption and Day Type (X ₀ != X ₐ)
- -**Method Used :** Two Sampled T-test
+ - **Null Hypothesis (H₀):** There is no meaningful connection between my Quality Media Consumption and Day Type (X ₀ = X ₐ)
+ - **Alternative Hypothesis (Hₐ):** There is a meaningful connection between Quality Media consumption and Day Type (X ₀ != X ₐ)
+ - **Method Used :** Two Sampled T-test
  ---
  #### **Hypothesis 2: Result**
- -**P-Value :** 0.2672
- -**Conclusion** Fail to reject the null hypothesis  there are not enough evidence
+ - **P-Value :** 0.2672
+ - **Conclusion** Fail to reject the null hypothesis  there are not enough evidence
  ---
  ### **Hypothesis 3**
- -**Null Hypothesis (H₀):** There is no meaningful connection between my Social Media Consumption and Day Type (X ₀ = X ₐ)
- -**Alternative Hypothesis (Hₐ):** There is a meaningful connection between Social Media consumption and Day Type (X ₀ != X ₐ)
- -**Method Used :** Two Sampled T-test
+ - **Null Hypothesis (H₀):** There is no meaningful connection between my Social Media Consumption and Day Type (X ₀ = X ₐ)
+ - **Alternative Hypothesis (Hₐ):** There is a meaningful connection between Social Media consumption and Day Type (X ₀ != X ₐ)
+ - **Method Used :** Two Sampled T-test
 ---
 #### **Hypothesis 3: Result**
- -**P-Value :** 0.2982
- -**Conclusion** Fail to reject the null hypothesis  there are not enough evidence
+ - **P-Value :** 0.2982
+ - **Conclusion** Fail to reject the null hypothesis  there are not enough evidence
 ---
  ### **Hypothesis 4**
- -**Null Hypothesis (H₀):** Different platforms does not effect quality media usage differently(U1 = U2 = U3 )
- -**Alternative Hypothesis (Hₐ):** Different platforms does  effect quality media usage differently (Any Differs) 
- -**Method Used :** ANNOVA
+ - **Null Hypothesis (H₀):** Different platforms does not effect quality media usage differently(U1 = U2 = U3 )
+ - **Alternative Hypothesis (Hₐ):** Different platforms does  effect quality media usage differently (Any Differs) 
+ - **Method Used :** ANNOVA
 ---
 #### **Hypothesis 4: Result**
- -**P-Value :** 0.9989
- -**Conclusion** Fail to reject the null hypothesis  there are not enough evidence
+ - **P-Value :** 0.9989
+ - **Conclusion** Fail to reject the null hypothesis  there are not enough evidence
  
 
 
