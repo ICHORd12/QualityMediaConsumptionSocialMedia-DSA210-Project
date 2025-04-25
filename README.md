@@ -76,9 +76,18 @@ I am a student from Sabancı University **Ege Büyükacaroğlu** and in this pro
 #### **Hypothesis 4: Result**
  - **P-Value :** 0.9989
  - **Conclusion** Fail to reject the null hypothesis  there are not enough evidence
- 
-
-
+ ---
+ ## **How To Use Code**
+ 1. Download the git and unzip
+ 2. Go to ./QualityMediaConsumptionSocialMedia-DSA210-Project-main
+ 3. Download the dependancies pip3 install < requirements.txt
+ 4. Run the code pyhton3 Pythoncode.py
+ - Example for MACOS
+   '''zsh
+   cd /Users/<your_username>/Downloads/QualityMediaConsumptionSocialMedia-DSA210-Project-main
+   pip3 install < requirements.txt
+   python3 Pythoncode.py
+   '''
  
  
 
