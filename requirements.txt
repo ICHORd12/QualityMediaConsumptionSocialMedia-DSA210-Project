@@ -1,0 +1,12 @@
+#Make sure that you are in right directory
+#Needed Modules
+
+#Data Analysis
+pandas
+numpy
+scipy
+
+#Visualization and Display
+matplotlib
+seaborn 
+IPython
