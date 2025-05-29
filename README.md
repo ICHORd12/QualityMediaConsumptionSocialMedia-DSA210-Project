@@ -100,7 +100,7 @@ I am a student from Sabancı University **Ege Büyükacaroğlu** and in this pro
    ```zsh
    cd /Users/<your_username>/Downloads/QualityMediaConsumptionSocialMedia-DSA210-Project-main
    pip3 install -r requirements.txt       
-   python3 Pythoncode.py
+   python3 Data_Visulization_and_ML_Applicaiton_Code.py
    ```
  
  
