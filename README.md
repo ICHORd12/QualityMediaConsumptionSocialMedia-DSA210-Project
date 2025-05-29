@@ -77,6 +77,20 @@ I am a student from Sabancı University **Ege Büyükacaroğlu** and in this pro
  - **P-Value :** 0.9989
  - **Conclusion** Fail to reject the null hypothesis  there are not enough evidence
  ---
+ ## **ML Methods**
+ - **Linear Regression**
+ - **KNN**
+ - **Random Forest**
+### **Results**
+  | Model                       | Social RMSE (hours) | Quality RMSE (hours) |
+| :-------------------------- | :------------------ | :------------------- |
+| Linear Regression           | 1.04                | **1.50**             |
+| k-Nearest Neighbors (Social)| 1.02                | 2.66                 |
+| k-Nearest Neighbors (Quality)| 1.09               | 2.04                 |
+| Random Forest (Social)      | **0.64**            | 1.98                 |
+| Random Forest (Quality)     | 0.66                | 1.92                 |
+
+ ---
  ## **How To Use Code**
  1. Download the git and unzip
  2. Go to ./QualityMediaConsumptionSocialMedia-DSA210-Project-main
