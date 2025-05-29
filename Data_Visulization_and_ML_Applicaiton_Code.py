@@ -427,3 +427,227 @@ plt.ylabel("Quality Media Hours")
 plt.xticks(rotation=45)
 plt.tight_layout()
 plt.show()
+
+#ML Methods application
+print("\n ML Method applications")
+
+# Import required ML libraries
+from sklearn.preprocessing import StandardScaler #scaling countinous ones
+from sklearn.model_selection import cross_val_score, KFold, cross_val_predict
+from sklearn.linear_model import LinearRegression
+from sklearn.neighbors import KNeighborsRegressor
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import mean_squared_error
+
+# encode with day type binary encoding used due to having binary classification
+df['day_type_encoded'] = df['day_type'].map({'Workday': 0, 'Holiday': 1})
+
+#scaling the numerical features 
+num_features = ['youtube_phone_mins', 'instagram_mins', 'reddit_mins', 'comics_mins', 'games_mins']
+scaler = StandardScaler()
+df[num_features] = scaler.fit_transform(df[num_features])
+
+
+#Define features and targets
+features = ['day_type_encoded'] + num_features
+
+# Verify all features exist
+X = df[features]
+y_social = df['social_hours']
+y_quality = df['quality_hours']
+
+#Setup Cross validation 
+
+cv = KFold(n_splits=5, shuffle=True, random_state=42)
+
+#KNN parameter tuning 
+print("\nTuning k for kNN models")
+
+k_values = range(1, 16)
+
+# Find best k for social hours
+knn_cv_scores_social = []
+print("Tuning for social hours")
+for k in k_values:
+    
+  model = KNeighborsRegressor(n_neighbors=k)
+  scores = cross_val_score(model, X, y_social, cv=cv, scoring='neg_mean_squared_error')
+  knn_cv_scores_social.append(-np.mean(scores))
+    
+
+# Find best k for quality hours
+knn_cv_scores_quality = []
+print("Tuning for quality hours")
+for k in k_values:
+    
+  model = KNeighborsRegressor(n_neighbors=k)
+  scores = cross_val_score(model, X, y_quality, cv=cv, scoring='neg_mean_squared_error')
+  knn_cv_scores_quality.append(-np.mean(scores))
+
+
+best_k_social = k_values[np.nanargmin(knn_cv_scores_social)] 
+best_k_quality = k_values[np.nanargmin(knn_cv_scores_quality)]
+
+print(f"\nOptimal k for social hours: {best_k_social}")
+print(f"Optimal k for quality hours: {best_k_quality}")
+
+# Plot results
+plt.figure(figsize=(15, 6))
+
+# Social hours plot
+plt.subplot(1, 2, 1)
+plt.plot(k_values, knn_cv_scores_social, 'bo-')
+plt.axvline(x=best_k_social, color='r', linestyle='--')
+plt.xlabel('Number of Neighbors (k)')
+plt.ylabel('Mean Squared Error')
+plt.title(f'kNN Tuning for Social Hours (Best k={best_k_social})')
+plt.grid(True)
+
+# Quality hours plot
+plt.subplot(1, 2, 2)
+plt.plot(k_values, knn_cv_scores_quality, 'go-')
+plt.axvline(x=best_k_quality, color='r', linestyle='--')
+plt.xlabel('Number of Neighbors (k)')
+plt.ylabel('Mean Squared Error')
+plt.title(f'kNN Tuning for Quality Hours (Best k={best_k_quality})')
+plt.grid(True)
+
+plt.tight_layout()
+plt.show()
+
+#Random Forest Parameter Tuning
+
+print("\nTuning Random Forest for Social Hours")
+rf_depths = [3, 5, 7, 10]
+n_estimators = [50, 100, 150]
+results_social = {}
+
+for d in rf_depths:
+    for n in n_estimators:
+        rf = RandomForestRegressor(max_depth=d, n_estimators=n, random_state=42)
+        score = cross_val_score(rf, X, y_social, cv=cv, scoring='neg_mean_squared_error').mean()
+        results_social[(d, n)] = -score
+
+#Find best combination for social hours
+best_rf_social = min(results_social, key=results_social.get)
+print(f"Best RF for Social: depth={best_rf_social[0]}, n_est={best_rf_social[1]} Best CV MSE: {results_social[best_rf_social]:.2f}")
+
+#Tune Random Forest for Quality Hours
+print("Tuning Random Forest for Quality Hours")
+results_quality = {}
+
+for d in rf_depths:
+    for n in n_estimators:
+        rf = RandomForestRegressor(max_depth=d, n_estimators=n, random_state=42)
+        score = cross_val_score(rf, X, y_quality, cv=cv, scoring='neg_mean_squared_error').mean()
+        results_quality[(d, n)] = -score
+        
+
+# Find best combination for quality hours
+best_rf_quality = min(results_quality, key=results_quality.get)
+print(f"Best RF for Social: depth={best_rf_quality[0]}, n_est={best_rf_quality[1]} Best CV MSE: {results_quality[best_rf_quality]:.2f}")
+
+####
+#Initialize models
+models = {
+    "Linear Regression": LinearRegression(),
+    "k-Nearest Neighbors (Social)": KNeighborsRegressor(n_neighbors=best_k_social),
+    "k-Nearest Neighbors (Quality)": KNeighborsRegressor(n_neighbors=best_k_quality),
+    
+    "Random Forest (Social)": RandomForestRegressor(max_depth=best_rf_social[0] ,n_estimators= best_rf_social[1], random_state=42),
+    "Random Forest (Quality)": RandomForestRegressor(max_depth=best_rf_quality[0] ,n_estimators= best_rf_quality[1], random_state=42)
+}
+
+#Evaluate models for both targets
+results = []
+for model_name, model in models.items():
+    model_results = {'Model': model_name}
+    
+    # Evaluate for social hours
+    
+    social_preds = cross_val_predict(model, X, y_social, cv=cv)
+    social_rmse = np.sqrt(mean_squared_error(y_social, social_preds))
+    model_results.update({
+        'Social RMSE': f"{social_rmse:.2f} hours"
+    })
+    
+    # Evaluate for quality hours
+    
+    quality_preds = cross_val_predict(model, X, y_quality, cv=cv)
+    quality_rmse = np.sqrt(mean_squared_error(y_quality, quality_preds))
+    model_results.update({
+        'Quality RMSE': f"{quality_rmse:.2f} hours"
+    })
+    
+    results.append(model_results)
+
+#Print results table
+results_df = pd.DataFrame(results)
+display(results_df)
+
+
+#Visualize predictions (Linear Regression)
+
+print("\nVisualizing Linear Regression predictions")
+model = LinearRegression()
+model.fit(X, y_social)
+y_social_pred = model.predict(X)
+
+model.fit(X, y_quality)
+y_quality_pred = model.predict(X)
+
+plt.figure(figsize=(15, 6))
+
+# Social hours plot
+plt.subplot(1, 2, 1)
+plt.scatter(y_social, y_social_pred, alpha=0.6, color='blue')
+plt.plot([0, y_social.max()], [0, y_social.max()], 'k--', lw=2)
+plt.xlabel("Actual Social Hours", fontsize=12)
+plt.ylabel("Predicted Social Hours", fontsize=12)
+plt.title("Social Hours Prediction (Linear Regression)", fontsize=14)
+
+# Quality hours plot
+plt.subplot(1, 2, 2)
+plt.scatter(y_quality, y_quality_pred, alpha=0.6, color='green')
+plt.plot([0, y_quality.max()], [0, y_quality.max()], 'k--', lw=2)
+plt.xlabel("Actual Quality Hours", fontsize=12)
+plt.ylabel("Predicted Quality Hours", fontsize=12)
+plt.title("Quality Hours Prediction (Linear Regression)", fontsize=14)
+
+plt.tight_layout()
+plt.show()
+
+#Visualize Random Forest
+
+print("\nVisualizing Random Forest predictions")
+
+#Create and fit models using the best parameters
+rf_social = RandomForestRegressor(max_depth=best_rf_social[0],n_estimators=best_rf_social[1],random_state=42)
+rf_social.fit(X, y_social)
+y_social_pred_rf = rf_social.predict(X)
+
+rf_quality = RandomForestRegressor(max_depth=best_rf_quality[0],n_estimators=best_rf_quality[1],random_state=42)
+rf_quality.fit(X, y_quality)
+y_quality_pred_rf = rf_quality.predict(X)
+
+
+plt.figure(figsize=(15, 6))
+
+# Social hours plot
+plt.subplot(1, 2, 1)
+plt.scatter(y_social, y_social_pred_rf, alpha=0.6, color='blue')
+plt.plot([0, y_social.max()], [0, y_social.max()], 'k--', lw=2)
+plt.xlabel("Actual Social Hours", fontsize=12)
+plt.ylabel("Predicted Social Hours", fontsize=12)
+plt.title(f"Social Hours Prediction (Random Forest)\ndepth={best_rf_social[0]}, trees={best_rf_social[1]}", fontsize=14)
+
+# Quality hours plot
+plt.subplot(1, 2, 2)
+plt.scatter(y_quality, y_quality_pred_rf, alpha=0.6, color='green')
+plt.plot([0, y_quality.max()], [0, y_quality.max()], 'k--', lw=2)
+plt.xlabel("Actual Quality Hours", fontsize=12)
+plt.ylabel("Predicted Quality Hours", fontsize=12)
+plt.title(f"Quality Hours Prediction (Random Forest)\ndepth={best_rf_quality[0]}, trees={best_rf_quality[1]}", fontsize=14)
+
+plt.tight_layout()
+plt.show()
