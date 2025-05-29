@@ -10,3 +10,6 @@ scipy
 matplotlib
 seaborn 
 IPython
+
+#ML stuff
+scikit-learn
