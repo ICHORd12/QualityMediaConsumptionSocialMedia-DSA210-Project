@@ -95,7 +95,7 @@ I am a student from Sabancı University **Ege Büyükacaroğlu** and in this pro
  1. Download the git and unzip
  2. Go to ./QualityMediaConsumptionSocialMedia-DSA210-Project-main
  3. Download the dependancies  pip3 install -r requirements.txt       
- 4. Run the code pyhton3 Pythoncode.py
+ 4. Run the code pyhton3 Data_Visulization_and_ML_Applicaiton_Code.py
  - Example for MACOS
    ```zsh
    cd /Users/<your_username>/Downloads/QualityMediaConsumptionSocialMedia-DSA210-Project-main
